@@ -1,2 +1,3 @@
+djangomatrixappservice @ git+https://codeberg.org/alertrix/djangomatrixappservice@ff576a7277960827e247dde8a069a6b7ee18f9ad
 uvicorn==0.29.0
 psycopg2-binary==2.9.9

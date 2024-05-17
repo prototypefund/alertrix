@@ -72,12 +72,14 @@ WSGI_APPLICATION = 'alertrix_deployment.wsgi.application'
 
 
 # Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': DATA_DIR / 'db.sqlite3',
-    },
-}
+DATABASES = None
+if DATABASES is None:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': DATA_DIR / 'db.sqlite3',
+        },
+    }
 
 
 # Password validation

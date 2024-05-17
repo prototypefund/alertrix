@@ -74,6 +74,17 @@ WSGI_APPLICATION = 'alertrix_deployment.wsgi.application'
 # Database
 DATABASE_TYPE = os.getenv('DATABASE_TYPE') or 'postgres'
 DATABASES = None
+if DATABASE_TYPE == 'postgres':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.getenv('DATABASE_NAME'),
+            'USER': os.getenv('DATABASE_USER'),
+            'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+            'HOST': os.getenv('DATABASE_HOST') or 'localhost',
+            'PORT': os.getenv('DATABASE_PORT') or '5432',
+        },
+    }
 if DATABASES is None:
     DATABASES = {
         'default': {

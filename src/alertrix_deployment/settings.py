@@ -72,6 +72,7 @@ WSGI_APPLICATION = 'alertrix_deployment.wsgi.application'
 
 
 # Database
+DATABASE_TYPE = os.getenv('DATABASE_TYPE') or 'postgres'
 DATABASES = None
 if DATABASES is None:
     DATABASES = {

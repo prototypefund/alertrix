@@ -21,3 +21,6 @@ RUN adduser \
     --no-create-home \
     --uid "${UID}" \
     alertrix
+
+RUN mkdir /var/www/static/ -p
+RUN chown alertrix:alertrix /var/www/static

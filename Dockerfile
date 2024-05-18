@@ -38,3 +38,5 @@ USER alertrix
 
 # Copy the source code into the container.
 COPY ./src .
+
+RUN python manage.py collectstatic --noinput

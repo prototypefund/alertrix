@@ -40,3 +40,6 @@ USER alertrix
 COPY ./src .
 
 RUN python manage.py collectstatic --noinput
+
+# Expose the port that the application listens on.
+EXPOSE 8000

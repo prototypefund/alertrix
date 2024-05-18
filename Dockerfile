@@ -35,3 +35,6 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 # Switch to the non-privileged user to run the application.
 USER alertrix
+
+# Copy the source code into the container.
+COPY ./src .

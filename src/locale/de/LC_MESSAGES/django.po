@@ -34,3 +34,7 @@ msgstr "Anwendungsdienste"
 #: templates/base.html:43
 msgid "login"
 msgstr "Einloggen"
+
+#: templates/base.html:44
+msgid "register"
+msgstr "Registrieren"

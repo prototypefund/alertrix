@@ -168,3 +168,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ACCOUNTS_REGISTRATION_TOKEN_DURATION = datetime.timedelta(seconds=int(os.getenv('ALERTRIX_SLUG_MAX_LENGTH')) or 0) or datetime.timedelta(minutes=5)
 
 ALERTRIX_SLUG_MAX_LENGTH = os.getenv('ALERTRIX_SLUG_MAX_LENGTH') or 128
+
+MATRIX_VALIDATED_GROUP_NAME = os.getenv('MATRIX_VALIDATED_GROUP_NAME') or 'validated_matrix_id'

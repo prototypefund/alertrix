@@ -18,3 +18,7 @@ msgstr ""
 #: alertrix_deployment/settings.py:142
 msgid "English"
 msgstr "Englisch"
+
+#: alertrix_deployment/settings.py:143
+msgid "German"
+msgstr "Deutsch"

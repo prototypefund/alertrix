@@ -26,3 +26,7 @@ msgstr "Deutsch"
 #: templates/base.html:20
 msgid "companies"
 msgstr "Organisationen"
+
+#: templates/base.html:23
+msgid "applicationservices"
+msgstr "Anwendungsdienste"

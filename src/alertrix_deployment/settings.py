@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'matrixappservice',
     'alertrix',
+    'alertrix.accounts',
 ]
 
 MIDDLEWARE = [

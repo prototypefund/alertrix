@@ -22,3 +22,7 @@ msgstr "Englisch"
 #: alertrix_deployment/settings.py:143
 msgid "German"
 msgstr "Deutsch"
+
+#: templates/base.html:20
+msgid "companies"
+msgstr "Organisationen"

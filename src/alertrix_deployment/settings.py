@@ -165,4 +165,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+ACCOUNTS_REGISTRATION_TOKEN_DURATION = datetime.timedelta(seconds=int(os.getenv('ALERTRIX_SLUG_MAX_LENGTH')) or 0) or datetime.timedelta(minutes=5)
+
 ALERTRIX_SLUG_MAX_LENGTH = os.getenv('ALERTRIX_SLUG_MAX_LENGTH') or 128

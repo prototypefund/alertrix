@@ -27,6 +27,15 @@ ALLOWED_HOSTS = (os.getenv('DJANGO_ALLOWED_HOSTS') or '').split(',') or [
     '*',
 ]
 
+CSRF_TRUSTED_ORIGINS = (
+    [
+        'https://' + host
+        for host in ALLOWED_HOSTS
+    ]
+    if os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS') is None else
+    os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS').split(',')
+)
+
 
 # Application definition
 

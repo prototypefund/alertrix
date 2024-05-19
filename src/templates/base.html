@@ -1,0 +1,66 @@
+{% load i18n %}
+{% load static %}
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>{% block title %}Alertrix{% endblock %} | DjangoMatrixAppservice</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="icon" type="image/png" href="https://alertrix.net/wp-content/uploads/2024/03/Alertrix_rounded.png">
+    {% block static_content %}
+    {% endblock %}
+</head>
+<body>
+{% block header %}
+<div class="top-navigation">
+    <header class="top-navigation">
+        <div class="nav-left">
+            <div class="nav-item nav-left">
+                <a href="/"><img width="64" height="64" src="https://alertrix.net/wp-content/uploads/2024/03/Alertrix_rounded.png"></a>
+            </div>
+            <div class="nav-item nav-left">
+                <a href="{% url 'comp.list' %}">{% trans 'companies' %}</a>
+            </div>
+            <div class="nav-item nav-left">
+                <a href="{% url 'appservice.list' %}">{% trans 'applicationservices' %}</a>
+            </div>
+        </div>
+        <div class="nav-right">
+        {% if user.is_authenticated %}
+            <div class="nav-item nav-right">
+                <img src="" height="64" width="64">
+                <div>
+                    <a href="">
+                        {{ user }}
+                    </a>
+                    <br>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <div class="nav-item nav-right">
+                <a href="{% url 'login' %}">{% trans 'login' %}</a>
+                <a href="{% url 'register' %}">{% trans 'register' %}</a>
+            </div>
+        {% endif %}
+        </div>
+    </header>
+</div>
+{% endblock %}
+<br>
+{% block messages %}
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">{% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}</div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
+<main class="rounded">
+    {% block content %}
+    {% endblock %}
+</main>
+</body>
+</html>

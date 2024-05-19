@@ -30,3 +30,7 @@ msgstr "Organisationen"
 #: templates/base.html:23
 msgid "applicationservices"
 msgstr "Anwendungsdienste"
+
+#: templates/base.html:43
+msgid "login"
+msgstr "Einloggen"

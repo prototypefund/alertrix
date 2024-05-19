@@ -163,3 +163,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ALERTRIX_SLUG_MAX_LENGTH = os.getenv('ALERTRIX_SLUG_MAX_LENGTH') or 128

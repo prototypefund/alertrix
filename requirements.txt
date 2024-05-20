@@ -1,4 +1,4 @@
-alertrix @ https://codeberg.org/alertrix/alertrixdjango/releases/download/v0.1.0a242002/alertrix-0.1.0a242002.tar.gz
+alertrix @ https://codeberg.org/alertrix/alertrixdjango/releases/download/v0.1.0a242101/alertrix-0.1.0a242101.tar.gz
 djangomatrixappservice @ git+https://codeberg.org/alertrix/djangomatrixappservice@ff576a7277960827e247dde8a069a6b7ee18f9ad
 uvicorn==0.29.0
 psycopg2-binary==2.9.9

@@ -101,6 +101,14 @@ if DATABASE_TYPE == 'postgres':
             'PORT': os.getenv('DATABASE_PORT') or '5432',
         },
     }
+if DATABASE_TYPE == 'file':
+    DATABASE_FILE_NAME = os.getenv('DATABASE_FILE_NAME', 'db.sqlite3')
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': DATA_DIR / DATABASE_FILE_NAME,
+        },
+    }
 if DATABASES is None:
     DATABASES = {
         'default': {

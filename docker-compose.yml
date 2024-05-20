@@ -2,6 +2,10 @@ services:
   nginx:
     image: nginx:latest
     restart: always
+    environment:
+      VIRTUAL_HOST: nightly.alertrix.net
+      VIRTUAL_PORT: 80
+      LETSENCRYPT_HOST: nightly.alertrix.net
     volumes:
     - ./nginx/conf.d:/etc/nginx/conf.d
     - static:/var/www/static

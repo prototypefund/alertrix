@@ -1,0 +1,85 @@
+header .top-navigation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+div .top-navigation {
+  background-color: lightgray;
+}
+.top-navigation {
+  height: 80px;
+}
+.nav-item {
+  position: relative;
+  top: 50%;
+  padding: 8px;
+}
+.nav-item * {
+  display: inline-block;
+}
+.nav-left {
+  float: left;
+}
+.nav-right {
+  float: right;
+}
+main {
+  max-width: 980px;
+  background-color: #eee;
+  padding: 8px;
+  margin-left: auto;
+  margin-right: auto;
+}
+pre:has(> code) {
+  padding: 8px;
+  background-color: black;
+  color: white;
+  overflow-x: auto;
+  border-radius: 8px
+}
+.rounded {
+  border-radius: 8px
+}
+.helptext {
+  margin-left: 8px;
+  color: gray;
+}
+div.messages {
+  display: flex;
+}
+div.message {
+  margin: 8px auto;
+  border-radius: 8px;
+  border-width: 4px;
+  padding: 16px;
+  border: 4px dashed;
+}
+.message.info {
+  background-color: #AAAAFF;
+  border-color: #0000FF;
+}
+.message.info::before {
+  content: "\2139\fe0f ";
+}
+.message.success {
+  background-color: #88FF88;
+  border-color: #00AA00;
+}
+.message.success::before {
+  content: "\2705 ";
+}
+.message.warning {
+  background-color: #FFFF88;
+  border-color: #DD8800;
+}
+.message.warning::before {
+  content: "\26a0\fe0f ";
+}
+.message.error {
+  background-color: #FF8888;
+  border-color: #FF0000;
+}
+.message.error::before {
+  content: "\1f6a8 ";
+}

@@ -1,5 +1,5 @@
 services:
-  postgres:  # value for database/args/host in data/synapse/homeserver.yaml
+  postgres:
     image: postgres:latest
     restart: always
     environment:

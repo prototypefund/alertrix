@@ -11,6 +11,9 @@ services:
     - static:/var/www/static
     ports:
     - ${PORT}:80
+    depends_on:
+      alertrix:
+        condition: service_started
     networks:
       web:
       server:

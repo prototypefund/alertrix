@@ -1,4 +1,15 @@
 services:
+  nginx:
+    image: nginx:latest
+    restart: always
+    volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    - static:/var/www/static
+    ports:
+    - 8000:80
+    networks:
+      web:
+      server:
   alertrix:
     build:
       context: .
@@ -15,6 +26,7 @@ services:
     - 8000
     networks:
       database:
+      web:
   postgres:
     image: postgres:latest
     restart: always

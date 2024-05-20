@@ -6,7 +6,7 @@ services:
     - ./nginx/conf.d:/etc/nginx/conf.d
     - static:/var/www/static
     ports:
-    - 8000:80
+    - ${PORT}:80
     networks:
       web:
       server:

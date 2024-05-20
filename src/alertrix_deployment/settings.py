@@ -16,7 +16,7 @@ from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = BASE_DIR / 'data'
+DATA_DIR = Path(os.getenv('DJANGO_DATA_DIR', BASE_DIR / 'data'))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!

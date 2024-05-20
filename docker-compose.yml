@@ -20,3 +20,5 @@ volumes:
   static:
 networks:
   database:
+  server:
+    external: true

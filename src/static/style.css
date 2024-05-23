@@ -13,7 +13,7 @@ div .top-navigation {
 .nav-item {
   position: relative;
   top: 50%;
-  padding: 8px;
+  padding: 1ex;
 }
 .nav-item * {
   display: inline-block;
@@ -27,22 +27,22 @@ div .top-navigation {
 main {
   max-width: 980px;
   background-color: #eee;
-  padding: 8px;
+  padding: 1ex;
   margin-left: auto;
   margin-right: auto;
 }
 pre:has(> code) {
-  padding: 8px;
+  padding: 1ex;
   background-color: black;
   color: white;
   overflow-x: auto;
-  border-radius: 8px
+  border-radius: 1ex
 }
 .rounded {
-  border-radius: 8px
+  border-radius: 1ex
 }
 .helptext {
-  margin-left: 8px;
+  margin-left: 1ex;
   color: gray;
 }
 div.messages {
@@ -50,10 +50,10 @@ div.messages {
 }
 div.message {
   margin: 8px auto;
-  border-radius: 8px;
-  border-width: 4px;
-  padding: 16px;
-  border: 4px dashed;
+  border-radius: 1ex;
+  border-width: .5ex;
+  padding: 1em;
+  border: .5ex dashed;
 }
 .message.info {
   background-color: #AAAAFF;

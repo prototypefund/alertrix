@@ -1,13 +1,3 @@
-@media all and (orientation:landscape) {
-  * {
-    font-size: 1em;
-  }
-}
-@media all and (orientation:portrait) {
-  * {
-    font-size: 3vw;
-  }
-}
 header .top-navigation {
   position: absolute;
   top: 0;

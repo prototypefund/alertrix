@@ -78,6 +78,10 @@ CSRF_TRUSTED_ORIGINS = (
     if os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS') is None else
     os.getenv('DJANGO_CSRF_TRUSTED_ORIGINS').split(',')
 )
+# Allow the csrf cookie to be set when embedded in an iframe. Relies on protection by CSP.
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SECURE = True
 
 
 # Application definition

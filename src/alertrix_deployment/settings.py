@@ -29,6 +29,9 @@ ALLOWED_HOSTS = (os.getenv('DJANGO_ALLOWED_HOSTS', '')).split(',') or [
     '*',
 ]
 
+USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_PORT = True
+
 CSRF_TRUSTED_ORIGINS = (
     [
         'https://' + host

@@ -24,6 +24,7 @@
             </div>
         </div>
         <div class="nav-right">
+            {% if not request.GET.widgetId and not request.COOKIES.widgetId %}
         {% if user.is_authenticated %}
             <div class="nav-item nav-right">
                 <img src="" height="64" width="64">
@@ -44,6 +45,8 @@
                 <a href="{% url 'register' %}">{% trans 'register' %}</a>
             </div>
         {% endif %}
+            {% else %}
+            {% endif %}
         </div>
     </header>
 </div>

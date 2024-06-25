@@ -67,6 +67,9 @@ CSP_SCRIPT_SRC = list([
     "'self'",
 )
 
+SESSION_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SECURE = True
+
 CSRF_TRUSTED_ORIGINS = (
     [
         'https://' + host

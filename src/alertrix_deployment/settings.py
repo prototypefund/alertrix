@@ -32,6 +32,41 @@ ALLOWED_HOSTS = (os.getenv('DJANGO_ALLOWED_HOSTS', '')).split(',') or [
 USE_X_FORWARDED_HOST = True
 USE_X_FORWARDED_PORT = True
 
+# Content Security Policy
+
+CSP_FRAME_ANCESTORS = list([
+    fa
+    for fa in (os.getenv('CSP_FRAME_ANCESTOR') or '').split(',')
+    if os.getenv('CSP_FRAME_ANCESTOR') is not None
+]) or (
+    "'self'",
+    'vector://vector'
+)
+
+CSP_IMG_SRC = list([
+    fa
+    for fa in (os.getenv('CSP_IMG_SRC') or '').split(',')
+    if os.getenv('CSP_IMG_SRC') is not None
+]) or (
+    "'self'",
+)
+
+CSP_STYLE_SRC = list([
+    fa
+    for fa in (os.getenv('CSP_STYLE_SRC') or '').split(',')
+    if os.getenv('CSP_STYLE_SRC') is not None
+]) or (
+    "'self'",
+)
+
+CSP_SCRIPT_SRC = list([
+    fa
+    for fa in (os.getenv('CSP_SCRIPT_SRC') or '').split(',')
+    if os.getenv('CSP_SCRIPT_SRC') is not None
+]) or (
+    "'self'",
+)
+
 CSRF_TRUSTED_ORIGINS = (
     [
         'https://' + host

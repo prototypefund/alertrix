@@ -114,6 +114,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'alertrix_deployment.urls'
+ROOT_MATRIXCONF = 'alertrix.matrix_callbacks'
 
 TEMPLATES = [
     {

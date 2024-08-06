@@ -94,6 +94,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'matrixappservice',
+    'matrixappservice.database',
     'alertrix',
     'alertrix.accounts',
 ]

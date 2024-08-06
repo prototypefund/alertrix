@@ -130,6 +130,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'alertrix.context_processors.service_name',
+                'alertrix.context_processors.emoticons',
             ],
         },
     },
@@ -230,6 +231,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ACCOUNTS_REGISTRATION_TOKEN_DURATION = datetime.timedelta(seconds=int(os.getenv('ALERTRIX_SLUG_MAX_LENGTH') or 0)) or datetime.timedelta(minutes=5)
 
 ALERTRIX_SLUG_MAX_LENGTH = os.getenv('ALERTRIX_SLUG_MAX_LENGTH') or 128
+
+ALERTRIX_UNIT_EMOTICON = os.getenv('ALERTRIX_UNIT_EMOTICON') or '🚨'
+
+ALERTRIX_COMPANY_EMOTICON = os.getenv('ALERTRIX_COMPANY_EMOTICON') or '🏠'
 
 APPSERVICE_CLIENT_STORE_PATH = str(os.getenv('MATRIX_CLIENT_STORE_PATH', DATA_DIR / 'matrix'))
 

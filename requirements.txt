@@ -1,4 +1,4 @@
-alertrix @ https://codeberg.org/alertrix/alertrixdjango/releases/download/v0.1.0a243202a/alertrix-0.1.0a243202.post1.dev0+f77f194.tar.gz
+alertrix @ https://codeberg.org/alertrix/alertrixdjango/releases/download/v0.1.0a243202b/alertrix-0.1.0a243202.post2.dev0+d491b48.tar.gz
 django_csp==3.8
 uvicorn==0.29.0
 matrix-nio[e2e]==0.24.0

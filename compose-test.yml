@@ -1,0 +1,74 @@
+services:
+  nginx:
+    image: nginx:latest
+    restart: always
+    volumes:
+    - ./nginx/conf.d:/etc/nginx/conf.d
+    - static:/var/www/static
+    ports:
+    - 80
+    depends_on:
+      alertrix:
+        condition: service_started
+      synapse:
+        condition: service_started
+    networks:
+      web:
+        aliases:
+          - matrix.synapse.localhost
+          - mas-test.localhost
+      server:
+  alertrix:
+    build:
+      context: .
+      dockerfile: ./test/Dockerfile
+      network: host
+    hostname: alertrix
+    restart: always
+    env_file:
+    - test.env
+    volumes:
+    - ./data/docker:/app/data
+    - static:/var/www/static
+    - ../alertrixdjango/alertrix:/app/alertrix
+    - ../djangomatrixappservice/src/matrixappservice:/app/matrixappservice
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      database:
+      web:
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 0d90402588b5c23c80bd6e44c0e6b4bf44090f7e5f0f490d6561f3321762c6e3
+      POSTGRES_USER: alertrix
+      POSTGRES_DB: alertrix
+      POSTGRES_INITDB_ARGS: "--encoding='UTF8' --lc-collate='C' --lc-ctype='C'"
+    networks:
+      database:
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d ${DATABASE_NAME} -U ${DATABASE_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  synapse:
+    image: matrixdotorg/synapse:v1.105.1
+    restart: always
+    environment:
+      SYNAPSE_SERVER_NAME: "synapse.localhost"
+      SYNAPSE_REPORT_STATS: "no"
+    volumes:
+      - ./test/data:/data
+    user: "1000:1000"
+    networks:
+      web:
+volumes:
+  static:
+networks:
+  database:
+  web:
+    driver: bridge
+  server:
+    external: true

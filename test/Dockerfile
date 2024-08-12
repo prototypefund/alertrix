@@ -12,7 +12,7 @@ WORKDIR /app
 
 # Create a non-privileged user that the app will run under.
 # See https://docs.docker.com/go/dockerfile-user-best-practices/
-ARG UID=10001
+ARG UID=1000
 RUN adduser \
     --disabled-password \
     --gecos "" \
@@ -25,6 +25,7 @@ RUN adduser \
 RUN mkdir /var/www/static/ -p
 RUN chown alertrix:alertrix /var/www/static
 RUN chown alertrix:alertrix /home
+RUN chown alertrix:alertrix /app
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
@@ -33,8 +34,9 @@ RUN chown alertrix:alertrix /home
 RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \
     python -m pip install -r requirements.txt
+RUN python -m pip install coverage
 
-COPY ./entrypoint.sh .
+COPY ./test/entrypoint.sh .
 RUN chmod +x entrypoint.sh
 RUN chown -R alertrix:alertrix /usr/local/lib
 

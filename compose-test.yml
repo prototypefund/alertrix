@@ -3,7 +3,7 @@ services:
     image: nginx:latest
     restart: always
     volumes:
-    - ./nginx/conf.d:/etc/nginx/conf.d
+    - ./test/nginx/conf.d:/etc/nginx/conf.d
     - static:/var/www/static
     ports:
     - 80
@@ -17,7 +17,7 @@ services:
         aliases:
           - matrix.synapse.localhost
           - mas-test.localhost
-      server:
+      # server:
   alertrix:
     build:
       context: .
@@ -70,5 +70,5 @@ networks:
   database:
   web:
     driver: bridge
-  server:
-    external: true
+  # server:
+  #   external: true

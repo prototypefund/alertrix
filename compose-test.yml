@@ -28,7 +28,6 @@ services:
     env_file:
     - test.env
     volumes:
-    - ./data/docker:/app/data
     - static:/var/www/static
     - ../alertrixdjango/alertrix:/app/alertrix
     - ../djangomatrixappservice/src/matrixappservice:/app/matrixappservice

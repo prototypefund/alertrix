@@ -1,0 +1,36 @@
+services:
+  nginx:
+    image: nginx:latest
+    restart: always
+    environment:
+      VIRTUAL_HOST: nightly.alertrix.net
+      VIRTUAL_PORT: 80
+      LETSENCRYPT_HOST: nightly.alertrix.net
+    volumes:
+    - ./develop/nginx/conf.d:/etc/nginx/conf.d
+    - static:/var/www/static
+    network_mode: host
+  postgres:
+    image: postgres:latest
+    restart: always
+    hostname: 'postgres.localhost'
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_INITDB_ARGS: "--encoding='UTF8' --lc-collate='C' --lc-ctype='C'"
+    volumes:
+    - ${DATA_PATH}./postgres:/var/lib/postgresql/data
+    network_mode: host
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d ${DATABASE_NAME} -U ${DATABASE_USER}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  static:
+networks:
+  database:
+  web:
+  server:
+    external: true

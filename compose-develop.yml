@@ -27,6 +27,17 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+  synapse:
+    image: matrixdotorg/synapse:v1.105.1
+    restart: always
+    environment:
+      SYNAPSE_SERVER_NAME: "synapse.localhost"
+      SYNAPSE_REPORT_STATS: "no"
+    volumes:
+      - ${DEV_SYNAPSE_DATA_DIR:-./data}:/data
+    user: "1000:1000"
+    network_mode: host
+    hostname: 'matrix.synapse.localhost'
 volumes:
   static:
 networks:

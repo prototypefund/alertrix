@@ -8,7 +8,7 @@ services:
       LETSENCRYPT_HOST: nightly.alertrix.net
     volumes:
     - ./develop/nginx/conf.d:/etc/nginx/conf.d
-    - static:/var/www/static
+    - ./data/static:/var/www/static
     network_mode: host
   postgres:
     image: postgres:latest

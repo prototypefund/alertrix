@@ -1,4 +1,4 @@
-alertrix @ https://codeberg.org/alertrix/alertrixdjango/releases/download/v0.1.0a243803/alertrix-0.1.0a243803.tar.gz
+alertrix @ https://codeberg.org/alertrix/alertrixdjango/releases/download/v0.1.0a243804/alertrix-0.1.0a243804.tar.gz
 django_csp==3.8
 uvicorn==0.29.0
 psycopg2-binary==2.9.9

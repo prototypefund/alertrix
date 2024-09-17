@@ -16,6 +16,7 @@ services:
       web:
         aliases:
           - matrix.synapse.localhost
+          - synapse.localhost
           - mas-test.localhost
       # server:
   alertrix:

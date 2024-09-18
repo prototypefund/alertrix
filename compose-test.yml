@@ -5,8 +5,10 @@ services:
     volumes:
     - ./test/nginx/conf.d:/etc/nginx/conf.d
     - static:/var/www/static
-    ports:
-    - 80
+    expose:
+      - 8000
+      - 8008
+      - 80
     depends_on:
       alertrix:
         condition: service_started
@@ -24,7 +26,6 @@ services:
       context: .
       dockerfile: ./test/Dockerfile
       network: host
-    hostname: alertrix
     restart: always
     env_file:
     - test.env
@@ -35,6 +36,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    expose:
+      - 8000
     networks:
       database:
       web:

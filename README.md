@@ -8,6 +8,10 @@ Before starting for the first time, run
 ```commandline
 sudo docker-compose build
 ```
+### Starting
+```commandline
+sudo docker compose -f compose-develop.yml up -d
+```
 
 
 ## Configuration options

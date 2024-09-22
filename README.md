@@ -2,6 +2,9 @@
 Der Messenger für Einsatzkräfte
 
 
+## Running the service
+
+
 ## Configuration options
 
 `PORT`  The port you want the docker container to publish

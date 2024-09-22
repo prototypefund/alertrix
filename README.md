@@ -3,6 +3,11 @@ Der Messenger für Einsatzkräfte
 
 
 ## Running the service
+### Starting for the first time
+Before starting for the first time, run
+```commandline
+sudo docker-compose build
+```
 
 
 ## Configuration options

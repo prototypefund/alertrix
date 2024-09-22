@@ -12,6 +12,10 @@ sudo docker-compose build
 ```commandline
 sudo docker compose -f compose-develop.yml up -d
 ```
+### Stopping
+```commandline
+sudo docker compose -f compose-develop.yml down --remove-orphans --volumes
+```
 
 
 ## Configuration options

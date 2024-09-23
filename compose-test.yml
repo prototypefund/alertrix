@@ -5,10 +5,6 @@ services:
     volumes:
     - ${DATA_PATH:-./}test/nginx/conf.d:/etc/nginx/conf.d
     - static:/var/www/static
-    expose:
-      - 8000
-      - 8008
-      - 80
     depends_on:
       alertrix:
         condition: service_started
@@ -19,8 +15,6 @@ services:
         aliases:
           - matrix.synapse.localhost
           - synapse.localhost
-          - mas-test.localhost
-      # server:
   alertrix:
     build:
       context: .
@@ -33,11 +27,6 @@ services:
     - static:/var/www/static
     - ../alertrixdjango/alertrix:/app/alertrix
     - ../djangomatrixappservice/src/matrixappservice:/app/matrixappservice
-    depends_on:
-      postgres:
-        condition: service_healthy
-    expose:
-      - 8000
     networks:
       database:
       web:
@@ -72,6 +61,5 @@ volumes:
 networks:
   database:
   web:
-    driver: bridge
   # server:
   #   external: true

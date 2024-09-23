@@ -1,0 +1,49 @@
+# Configuration file for Synapse.
+#
+# This is a YAML file: see [1] for a quick introduction. Note in particular
+# that *indentation is important*: all the elements of a list or dictionary
+# should have the same indentation.
+#
+# [1] https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
+#
+# For more information on how to configure Synapse, including a complete accounting of
+# each option, go to docs/usage/configuration/config_documentation.md or
+# https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html
+server_name: "synapse.localhost"
+pid_file: /data/homeserver.pid
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client, federation]
+        compress: false
+database:
+  name: sqlite3
+  args:
+    database: /data/homeserver.db
+log_config: "/data/synapse.localhost.log.config"
+media_store_path: /data/media_store
+registration_shared_secret: "9fcyNW~V9FSjG_hT5QYj#*oV;Rt0Exn6*iTCUC8XD.8AOv9bss"
+report_stats: false
+macaroon_secret_key: "*esjfVAIOzoA0a6Tc0c1HmG@Ph5gDTQcSHU..lyhcrd,o^ORDW"
+form_secret: "9VA4;QqgwF-l:rJwp*C5s*N^6MaB;-*~_5aDpZfiSuihESZ1W1"
+signing_key_path: "/data/synapse.localhost.signing.key"
+trusted_key_servers:
+  - server_name: "matrix.org"
+app_service_config_files:
+  - /data/alertrix.yaml
+rc_invites:
+  per_room:
+    per_second: 0.5
+    burst_count: 500
+  per_user:
+    per_second: 0.004
+    burst_count: 300
+  per_issuer:
+    per_second: 0.5
+    burst_count: 500
+
+
+# vim:ft=yaml

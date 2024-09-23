@@ -1,0 +1,15 @@
+id: "alertrix"
+url: "http://alertrix:8000"
+as_token: "<as_token>"
+hs_token: "<hs_token>"
+sender_localpart: "alertrix_"
+rate_limited: false
+namespaces:
+#  aliases:
+#    - exclusive: true
+#      regex: "#alertrix_*"
+  users:
+    - exclusive: true
+      regex: "@alertrix_*"
+    - exclusive: true
+      regex: "@alertrix:synapse.localhost"

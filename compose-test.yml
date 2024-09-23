@@ -3,7 +3,7 @@ services:
     image: nginx:latest
     restart: always
     volumes:
-    - ./test/nginx/conf.d:/etc/nginx/conf.d
+    - ${DATA_PATH:-./}test/nginx/conf.d:/etc/nginx/conf.d
     - static:/var/www/static
     expose:
       - 8000
@@ -63,7 +63,7 @@ services:
       SYNAPSE_SERVER_NAME: "synapse.localhost"
       SYNAPSE_REPORT_STATS: "no"
     volumes:
-      - ./test/data:/data
+      - ${DATA_PATH:-./}test/synapse:/data
     user: "1000:1000"
     networks:
       web:

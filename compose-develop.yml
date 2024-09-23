@@ -3,8 +3,8 @@ services:
     image: nginx:latest
     restart: always
     volumes:
-    - ./develop/nginx/conf.d:/etc/nginx/conf.d
-    - ./data/static:/var/www/static
+    - ${DATA_PATH:-./}develop/nginx/conf.d:/etc/nginx/conf.d
+    - ${DATA_PATH:-./}develop/static:/var/www/static
     network_mode: host
   postgres:
     image: postgres:latest
@@ -16,7 +16,7 @@ services:
       POSTGRES_DB: ${DATABASE_NAME}
       POSTGRES_INITDB_ARGS: "--encoding='UTF8' --lc-collate='C' --lc-ctype='C'"
     volumes:
-    - ${DATA_PATH}./postgres:/var/lib/postgresql/data
+    - ${DATA_PATH:-./}develop/postgres:/var/lib/postgresql/data
     network_mode: host
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -d ${DATABASE_NAME} -U ${DATABASE_USER}" ]
@@ -30,7 +30,7 @@ services:
       SYNAPSE_SERVER_NAME: "synapse.localhost"
       SYNAPSE_REPORT_STATS: "no"
     volumes:
-      - ${DEV_SYNAPSE_DATA_DIR:-./data}:/data
+      - ${DATA_PATH:-./}develop/synapse:/data
     user: "1000:1000"
     network_mode: host
     hostname: 'matrix.synapse.localhost'

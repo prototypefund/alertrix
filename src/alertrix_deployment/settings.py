@@ -158,14 +158,24 @@ WSGI_APPLICATION = 'alertrix_deployment.wsgi.application'
 DATABASE_TYPE = os.getenv('DATABASE_TYPE') or 'postgres'
 DATABASES = None
 if DATABASE_TYPE == 'postgres':
+    DJANGO_PGPASS_FILE_PATH = os.getenv(
+        'DJANGO_PGPASS_FILE_PATH',
+        '/run/secrets/pgpass',
+    )
+    if os.path.exists(DJANGO_PGPASS_FILE_PATH):
+        with open(DJANGO_PGPASS_FILE_PATH, 'r') as file:
+            text = file.read()
+            hostname, port, database, username, password = text.split(':')
+    else:
+        hostname, port, database, username, password = [None for _ in range(5)]
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.getenv('DATABASE_NAME'),
-            'USER': os.getenv('DATABASE_USER'),
-            'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-            'HOST': os.getenv('DATABASE_HOST') or 'localhost',
-            'PORT': os.getenv('DATABASE_PORT') or '5432',
+            'NAME': os.getenv('DATABASE_NAME', database),
+            'USER': os.getenv('DATABASE_USER', username),
+            'PASSWORD': os.getenv('DATABASE_PASSWORD', password),
+            'HOST': os.getenv('DATABASE_HOST', hostname) or 'localhost',
+            'PORT': os.getenv('DATABASE_PORT', port) or '5432',
         },
     }
 if DATABASE_TYPE == 'file':

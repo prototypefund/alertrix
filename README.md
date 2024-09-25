@@ -53,4 +53,5 @@ You should store the following secrets in files
 <table>
 <thead><td>file name</td><td>description</td></thead>
 <tr><td>DJANGO_SECRET_KEY</td><td>Generate using <code>openssl rand --hex 32</code></td></tr>
+<tr><td>PGPASS</td><td>Generate using <code>hostname:port:database:username:password</code></td></tr>
 </table>

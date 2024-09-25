@@ -30,6 +30,8 @@ services:
     networks:
       database:
       web:
+    secrets:
+      - django_secret_key
   postgres:
     image: postgres:latest
     restart: always
@@ -63,3 +65,6 @@ networks:
   web:
   # server:
   #   external: true
+secrets:
+  django_secret_key:
+    file: ./DJANGO_SECRET_KEY

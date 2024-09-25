@@ -21,7 +21,21 @@ DATA_DIR = Path(os.getenv('DJANGO_DATA_DIR', BASE_DIR / 'data'))
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+DEFAULT_SECRET_KEY_PATH = '/run/secrets/django_secret_key'
+SECRET_KEY_PATH = os.getenv('DJANGO_SECRET_KEY_PATH', DEFAULT_SECRET_KEY_PATH)
+
+if SECRET_KEY_PATH is not None and os.path.exists(SECRET_KEY_PATH):
+    with open(SECRET_KEY_PATH, 'r') as file:
+        SECRET_KEY = file.read()
+elif os.getenv('DJANGO_SECRET_KEY', None) is not None:
+    logging.warning(
+        'You should use a secret named "django_secret_key" or at least a file instead of a plain environment',
+    )
+    SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+else:
+    logging.warning(
+        'No SECRET_KEY for django provided',
+    )
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG') in ['true', 'True', '1']

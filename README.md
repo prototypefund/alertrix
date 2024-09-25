@@ -24,7 +24,9 @@ sudo docker compose -f compose-develop.yml down --remove-orphans --volumes
 
 `DATA_PATH`  relative or absolute path for where to store the persistent data
 
-`DJANGO_SECRET_KEY`  a random secret key for django
+`DJANGO_SECRET_KEY`  optional: a random secret key for django, you should use a file `./DJANGO_SECRET_KEY` instead
+
+`DJANGO_SECRET_KEY_PATH` optional: a custom file path
 
 `DJANGO_DEBUG`  optional: set to 'true', 'True' or '1' to use the debug mode
 
@@ -43,3 +45,12 @@ sudo docker compose -f compose-develop.yml down --remove-orphans --volumes
 `DATABASE_PASSWORD`  the databases password
 
 `DATABASE_NAME` the databases table name
+
+### Secrets
+
+You should store the following secrets in files
+
+<table>
+<thead><td>file name</td><td>description</td></thead>
+<tr><td>DJANGO_SECRET_KEY</td><td>Generate using <code>openssl rand --hex 32</code></td></tr>
+</table>

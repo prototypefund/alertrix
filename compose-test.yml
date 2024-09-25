@@ -32,6 +32,7 @@ services:
       web:
     secrets:
       - django_secret_key
+      - pgpass
   postgres:
     image: postgres:latest
     restart: always
@@ -68,3 +69,5 @@ networks:
 secrets:
   django_secret_key:
     file: ./DJANGO_SECRET_KEY
+  pgpass:
+    file: ./PGPASS_test

@@ -38,7 +38,7 @@ services:
     secrets:
       - django_secret_key
   postgres:
-    image: postgres:latest
+    image: postgres:16
     restart: always
     environment:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}  # value for database/args/password in data/synapse/homeserver.yaml

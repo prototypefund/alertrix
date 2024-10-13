@@ -62,8 +62,6 @@ volumes:
 networks:
   database:
   web:
-  # server:
-  #   external: true
 secrets:
   django_secret_key:
     file: ./DJANGO_SECRET_KEY

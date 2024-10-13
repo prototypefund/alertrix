@@ -1,9 +1,9 @@
 services:
-  nginx:
+  nginx-alertrix:
     image: nginx:latest
     restart: always
     volumes:
-    - ${DATA_PATH:-./}test/nginx/conf.d:/etc/nginx/conf.d
+    - ${DATA_PATH:-./}test/nginx-alertrix/conf.d:/etc/nginx/conf.d
     - static:/var/www/static
     depends_on:
       alertrix:
@@ -13,8 +13,7 @@ services:
     networks:
       web:
         aliases:
-          - matrix.synapse.localhost
-          - synapse.localhost
+          - alertrix.localhost
   alertrix:
     build:
       context: .

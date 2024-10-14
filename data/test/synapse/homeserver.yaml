@@ -23,13 +23,13 @@ database:
   name: sqlite3
   args:
     database: /data/homeserver.db
-log_config: "/data/synapse.localhost.log.config"
+log_config: "/data/synapse.log.config"
 media_store_path: /data/media_store
 registration_shared_secret: "9fcyNW~V9FSjG_hT5QYj#*oV;Rt0Exn6*iTCUC8XD.8AOv9bss"
 report_stats: false
 macaroon_secret_key: "*esjfVAIOzoA0a6Tc0c1HmG@Ph5gDTQcSHU..lyhcrd,o^ORDW"
 form_secret: "9VA4;QqgwF-l:rJwp*C5s*N^6MaB;-*~_5aDpZfiSuihESZ1W1"
-signing_key_path: "/data/synapse.localhost.signing.key"
+signing_key_path: "/data/synapse.signing.key"
 trusted_key_servers:
   - server_name: "matrix.org"
 app_service_config_files:

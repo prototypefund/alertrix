@@ -55,6 +55,8 @@ services:
     volumes:
       - ${DATA_PATH:-./}test/synapse:/data
     user: "1000:1000"
+    healthcheck:
+      test: curl --fail http://localhost:8008/health || exit 1
     networks:
       web:
 volumes:
